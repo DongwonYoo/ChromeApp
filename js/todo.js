@@ -12,8 +12,9 @@ function saveToDos() {
 
 function deleteTodo(event){
     const li = event.target.parentElement;
-    
     li.remove();
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id)); //クリックしたID以外は残す
+    saveToDos();
 }
 
 function paintToDo(newTodo){
@@ -35,7 +36,7 @@ function handleToDoSubmit(event){
     toDoInput.value = "";
     const newTodoObj =  {
         text: newTodo,
-        id: Date.now(),
+        id: Date.now(), //random id
     };
     toDos.push(newTodoObj); 
     paintToDo(newTodoObj);
@@ -55,5 +56,5 @@ if(savedToDos !== null){
 
 function Filter(){
     //지우고싶은것은 제외한 배열을 만든다.
-    
+
 }
